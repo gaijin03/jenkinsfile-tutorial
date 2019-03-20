@@ -1,4 +1,5 @@
 pipeline {
+    // so you can override later
     agent none
     stages {
         stage('Grab the code') {
@@ -21,10 +22,14 @@ pipeline {
         }
 
         stage('Deploy to stage?') {
-            agent none
+            agent any
+            environment {
+                SUPER_SECRET = 'blah'
+            }
 
             steps {
-                input 'Do you want to deploy to stage?'
+                //input 'Do you want to deploy to stage?'
+                echo "The password is: ${SUPER_SECRET}"
             }
         }
     }
