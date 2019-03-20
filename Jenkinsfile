@@ -1,6 +1,11 @@
 pipeline {
     // so you can override later
     agent none
+
+    options {
+        skipDefaultCheckout()
+    }
+
     stages {
         stage('Grab the code') {
             agent any
@@ -22,13 +27,39 @@ pipeline {
         }
 
         stage('Deploy to stage?') {
+            agent none
+
+            steps {
+                script {
+                    def varName = 
+                }
+                //input 'Do you want to deploy to stage?'
+            }
+        }
+
+        stage('Deploy to stage?') {
+            agent any
+            parallel {
+                stage('test1') {
+                    steps {
+                        sh 'sleep 20'
+                    }
+                }
+                stage('test2') {
+                    steps {
+                        sh 'sleep 20'
+                    }
+                }
+            }
+        }
+
+        stage('Deploy to stage?') {
             agent any
             environment {
                 SUPER_SECRET = 'blah'
             }
 
             steps {
-                //input 'Do you want to deploy to stage?'
                 echo "The password is: ${SUPER_SECRET}"
             }
         }
