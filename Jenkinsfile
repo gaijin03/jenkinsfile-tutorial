@@ -37,7 +37,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to stage?') {
+        stage('parallel') {
             parallel {
                 stage('test1') {
                     agent any
@@ -54,7 +54,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to stage?') {
+        stage('variable') {
             agent any
             environment {
                 SUPER_SECRET = 'blah'
