@@ -38,14 +38,15 @@ pipeline {
         }
 
         stage('Deploy to stage?') {
-            agent any
             parallel {
                 stage('test1') {
+                    agent any
                     steps {
                         sh 'sleep 20'
                     }
                 }
                 stage('test2') {
+                    agent any
                     steps {
                         sh 'sleep 20'
                     }
