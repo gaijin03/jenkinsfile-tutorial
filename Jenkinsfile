@@ -30,10 +30,10 @@ pipeline {
             agent none
 
             steps {
-                script {
-                    def varName = 
-                }
-                //input 'Do you want to deploy to stage?'
+                //script {
+                //    def varName = 
+                //}
+                input 'Do you want to deploy to stage?'
             }
         }
 
