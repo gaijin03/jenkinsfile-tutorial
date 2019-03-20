@@ -14,6 +14,7 @@ pipeline {
                 checkout scm
                 sh 'echo hello world'
                 sh 'ls'
+                sh 'env'
 
             }
         }
